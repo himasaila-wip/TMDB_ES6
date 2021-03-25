@@ -6,7 +6,7 @@
 
 ##### To get all the desired libraries
 
-####### npm install
+- npm install
 
 ##### To run the Application
 
