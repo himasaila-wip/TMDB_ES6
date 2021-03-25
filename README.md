@@ -4,15 +4,15 @@
 
 [https://github.com/himasaila-wip/tmdb_es6.git]
 
-## To get all the desired libraries
+#### To get all the desired libraries
 
-# npm install
+###### npm install
 
-## TO run the Application
+#### TO run the Application
 
 [http://localhost:3001/]
 
-## TO run the Swagger
+#### TO run the Swagger
 
-[http://localhost:3001/docs-api/#/default'
+[http://localhost:3001/docs-api/#/default]
 
