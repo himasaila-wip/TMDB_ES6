@@ -25,8 +25,10 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
-
-var app = express();
+import movieRouter from './routes/movie';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDoc from '../swagger/swagger.json';
+let app = express();
 
 
 app.use(logger('dev'));
@@ -36,6 +38,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/movie',movieRouter);
+app.use("/docs-api",swaggerUi.serve,swaggerUi.setup(swaggerDoc,{ explorer: true }));
 
 export default app;
