@@ -26,65 +26,71 @@
             }
         },
         "/movie/popularity": {
+            "parameters": [{
+                "name": "popularity",
+                "in": "header"
+            }],
             "get": {
-                "parameters": [{
-                    "name": "popularity",
-                    "in": "header",
-                    "required": "true"
-                }],
                 "summary": "Get list of movies with specifed popularity",
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "400": {
+                        "description": "Falied"
                     }
                 }
             }
         },
         "/movie/genre": {
+            "parameters": [{
+                "name": "gen",
+                "in": "header"
+            }],
             "get": {
-                "parameters": [{
-                    "name": "gen",
-                    "in": "header",
-                    "required": "true"
-                }],
-                "summary": "Get list of movies with specified genre",
+                "summary": "Get list of movies with specifed genres",
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "400": {
+                        "description": "Falied"
                     }
                 }
             }
         },
         "/movie/date": {
+            "parameters": [{
+                "name": "datenum",
+                "in": "header"
+            }],
             "get": {
-                "parameters": [{
-                    "name": "datenum",
-                    "in": "header",
-                    "required": "true"
-                }],
-                "summary": "Get list of movies with specified date",
+                "summary": "Get list of movies with specifed date",
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "400": {
+                        "description": "Falied"
                     }
                 }
             }
         },
         "/movie/filter": {
+            "parameters": [{
+                    "name": "popularity",
+                    "in": "header"
+                },
+                {
+                    "name": "datenum",
+                    "in": "header"
+                },
+                {
+                    "name": "gen",
+                    "in": "header"
+                }
+            ],
             "get": {
-                "parameters": [{
-                        "name": "popularity",
-                        "in": "header"
-                    },
-                    {
-                        "name": "datenum",
-                        "in": "header"
-                    },
-                    {
-                        "name": "gen",
-                        "in": "header"
-                    }
-                ],
                 "summary": "Get list of movies with specified values",
                 "responses": {
                     "200": {
