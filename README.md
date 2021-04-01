@@ -1,4 +1,4 @@
-# THE MOVIE DATABASE in ES6
+# TMDB API
 
 ##### Clone this Application using below link in your favorite code editor
 
