@@ -17,24 +17,7 @@ class circuitBreaker {
       this.timeout = 6000
       this.nextAttempt = Date.now()
     }
-    // async fire() {
-    //   if (this.state === "OPEN") {
-    //     if (this.nextAttempt <= Date.now()) {
-    //       this.state = "HALF"
-    //     } else {
-    //       throw new Error("Breaker is OPEN")
-    //     }
-    //   }
-    //   try {
-    //     const response = await this.request;
-    //     //console.log("hi"+response)
-    //     return this.success(response)
-    //   } catch (err) {
-    //     return this.fail(err)
-    //   }
-    // }
-  
-    async fire(api) {
+    async fire() {
       if (this.state === "OPEN") {
         if (this.nextAttempt <= Date.now()) {
           this.state = "HALF"
@@ -43,12 +26,29 @@ class circuitBreaker {
         }
       }
       try {
-        const response =await  axios.get(api, {httpsAgent: agent})
+        let response = await this.request
+        //console.log(response.data)
         return this.success(response)
       } catch (err) {
         return this.fail(err)
       }
     }
+  
+    // async fire(api) {
+    //   if (this.state === "OPEN") {
+    //     if (this.nextAttempt <= Date.now()) {
+    //       this.state = "HALF"
+    //     } else {
+    //       throw new Error("Breaker is OPEN")
+    //     }
+    //   }
+    //   try {
+    //     const response =await  axios.get(api, {httpsAgent: agent})
+    //     return this.success(response)
+    //   } catch (err) {
+    //     return this.fail(err)
+    //   }
+    // }
     success(response) {
       if (this.state === "HALF") {
         this.successCount++

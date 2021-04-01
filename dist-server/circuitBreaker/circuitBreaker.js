@@ -35,28 +35,12 @@ var circuitBreaker = /*#__PURE__*/function () {
     this.successCount = 0;
     this.timeout = 6000;
     this.nextAttempt = Date.now();
-  } // async fire() {
-  //   if (this.state === "OPEN") {
-  //     if (this.nextAttempt <= Date.now()) {
-  //       this.state = "HALF"
-  //     } else {
-  //       throw new Error("Breaker is OPEN")
-  //     }
-  //   }
-  //   try {
-  //     const response = await this.request;
-  //     //console.log("hi"+response)
-  //     return this.success(response)
-  //   } catch (err) {
-  //     return this.fail(err)
-  //   }
-  // }
-
+  }
 
   (0, _createClass2["default"])(circuitBreaker, [{
     key: "fire",
     value: function () {
-      var _fire = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(api) {
+      var _fire = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
         var response;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
@@ -82,9 +66,7 @@ var circuitBreaker = /*#__PURE__*/function () {
               case 6:
                 _context.prev = 6;
                 _context.next = 9;
-                return _axios["default"].get(api, {
-                  httpsAgent: agent
-                });
+                return this.request;
 
               case 9:
                 response = _context.sent;
@@ -103,12 +85,27 @@ var circuitBreaker = /*#__PURE__*/function () {
         }, _callee, this, [[6, 13]]);
       }));
 
-      function fire(_x) {
+      function fire() {
         return _fire.apply(this, arguments);
       }
 
       return fire;
-    }()
+    }() // async fire(api) {
+    //   if (this.state === "OPEN") {
+    //     if (this.nextAttempt <= Date.now()) {
+    //       this.state = "HALF"
+    //     } else {
+    //       throw new Error("Breaker is OPEN")
+    //     }
+    //   }
+    //   try {
+    //     const response =await  axios.get(api, {httpsAgent: agent})
+    //     return this.success(response)
+    //   } catch (err) {
+    //     return this.fail(err)
+    //   }
+    // }
+
   }, {
     key: "success",
     value: function success(response) {
